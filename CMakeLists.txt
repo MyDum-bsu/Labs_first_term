@@ -3,4 +3,4 @@ project(Labs_first_term)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Labs_first_term main.cpp)
+add_executable(Labs_first_term lab4.8A.cpp lab4.8B.cpp)
