@@ -1,4 +1,5 @@
 #include <iostream>
+#include "lab4.8A.h"
 
 using namespace std;
 
@@ -16,7 +17,6 @@ char *strrchr1(char *string, int symbol) {
     for (i = 0; string[i] != '\0'; i++) {}
     for (int j = i - 1; j >= 0; j--) {
         if (string[j] == symbol) {
-            cout << "Index of the entered symbol - " << j << endl;
             return (string + j);
         }
         if (string[j] != symbol && j == 0) return nullptr;
@@ -24,7 +24,7 @@ char *strrchr1(char *string, int symbol) {
 
 }
 
-int main() {
+int mainA() {
     char *string;
     CinString(string);
     char symbol;

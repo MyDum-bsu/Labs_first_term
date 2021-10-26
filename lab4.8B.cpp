@@ -1,4 +1,5 @@
 #include <iostream>
+#include "lab4.8B.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ bool UniqueWordDeterminant(char *begin, const char *end) {
     return true;
 }
 
-void SearchWord(char *string, int n) {
+bool SearchWord(char *string, int n) {
     char *t_end;
     char *t_begin = string;
     char *end = string;
@@ -39,11 +40,14 @@ void SearchWord(char *string, int n) {
         for (char *i = begin; i <= end; ++i) {
             cout << *i;
         }
-    } else
+    } else {
         cout << "NO UNIQUE WORDS" << endl;
+        return false;
+    }
+    return true;
 }
 
-int main() {
+int mainB() {
     int n;
     cout << "Enter the length of the string" << endl;
     cin >> n;
