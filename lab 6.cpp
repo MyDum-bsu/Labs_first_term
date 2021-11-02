@@ -24,5 +24,10 @@ int main() {
     correctFraction lastdrob(2, 5);
     lastdrob.divideWithFraction(fraction);
     lastdrob.printFraction();
+
+    correctFraction lastdrobka(2, 0);
+    lastdrobka.divideWithFraction(fraction);
+    lastdrobka.printFraction();
+
     return 0;
 }

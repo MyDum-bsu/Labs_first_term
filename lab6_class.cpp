@@ -1,16 +1,24 @@
 #include "lab6_class.h"
 
 correctFraction::correctFraction(int numerator, int denominator) {
-    if (denominator == 0) {
-        std::cout << "Incorrect denominator = 0." << std::endl;
-        exit(1);
-    } else if (abs(numerator) > abs(denominator)) {
-        std::cout << "Incorrect fraction" << std::endl;
-        exit(1);
-    } else {
-        this->numerator = numerator;
-        this->denominator = denominator;
-        fractionReduction();
+    try {
+        if (denominator == 0) {
+//            std::cout << "Incorrect denominator = 0." << std::endl;
+            throw 1;
+        } else if (abs(numerator) > abs(denominator)) {
+//            std::cout << "Incorrect fraction" << std::endl;
+            throw 2;
+        } else {
+            this->numerator = numerator;
+            this->denominator = denominator;
+            fractionReduction();
+        }
+    } catch (int e) {
+        if (e == 1) {
+            std::cout << "Incorrect denominator = 0.\n";
+        } else if (e == 2) {
+            std::cout << "Incorrect fraction.\n";
+        }
     }
 }
 
@@ -88,10 +96,10 @@ bool correctFraction::divideWithFraction(correctFraction divider) {
 }
 
 bool correctFraction::printFraction() {
-    if(numerator * denominator < 0 ) {
-        std::cout<<"-"<<abs(numerator)<<"/"<<abs(denominator)<<std::endl;
+    if (numerator * denominator < 0) {
+        std::cout << "-" << abs(numerator) << "/" << abs(denominator) << std::endl;
     } else {
-        std::cout<<abs(numerator)<<"/"<<abs(denominator)<<std::endl;
+        std::cout << abs(numerator) << "/" << abs(denominator) << std::endl;
     }
     return true;
 }
