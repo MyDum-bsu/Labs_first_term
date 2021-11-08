@@ -4,7 +4,9 @@ class quadraticEquations {
 public:
     quadraticEquations(double a, double b, double c);
 
-    bool solve();
+    std::pair<double, double> solve();
+
+    double solveEquation();
 
 private:
     double a;
