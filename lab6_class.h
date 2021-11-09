@@ -8,25 +8,25 @@ public:
 
     correctFraction(const correctFraction &clone);
 
-    bool fractionReduction();
+    void fractionReduction();
 
-    int getFractionNumerator();
+    int getFractionNumerator() const;
 
-    int getFractionDenominator();
+    int getFractionDenominator() const;
 
-    bool sumWithNumber(int number);
+    void sumWithNumber(int number);
 
-    bool sumWithFraction(correctFraction fraction);
+    void sumWithFraction(const correctFraction& fraction);
 
-    bool multiplyWithNumber(int multiplier);
+    void multiplyWithNumber(int multiplier);
 
-    bool multiplyWithFraction(correctFraction fraction_);
+    void multiplyWithFraction(const correctFraction& fraction_);
 
-    bool divideWithNumber(int divider);
+    void divideWithNumber(int divider);
 
-    bool divideWithFraction(correctFraction divider);
+    void divideWithFraction(const correctFraction& divider);
 
-    bool printFraction();
+    void printFraction() const;
 private:
     int numerator;
     int denominator;
