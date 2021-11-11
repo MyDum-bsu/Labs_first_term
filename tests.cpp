@@ -9,8 +9,9 @@ TEST(solve, When_TwoSolutions) {
     std::pair<double, double> xV;
     xV.first = x.second;
     xV.second = x.first;
-    ASSERT_TRUE(( noka.solve() == x) || (noka.solve() == xV));
+    ASSERT_TRUE((noka.solve() == x) || (noka.solve() == xV));
 }
+
 TEST(solve, When_OneSolutions) {
     quadraticEquations noka(0, 7, 7);
     std::pair<double, double> x;
@@ -19,5 +20,5 @@ TEST(solve, When_OneSolutions) {
     std::pair<double, double> xV;
     xV.first = x.second;
     xV.second = x.first;
-    ASSERT_TRUE(( noka.solve() == x) || (noka.solve() == xV));
+    ASSERT_TRUE((noka.solve() == x) || (noka.solve() == xV));
 }

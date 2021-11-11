@@ -3,7 +3,7 @@ project(Labs_first_term)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Labs_first_term quadratic_equations.cpp quadratic_equations.h main.cpp tests.cpp)
+add_executable(Labs_first_term quadratic_equations.cpp quadratic_equations.h main.cpp)
 
 project(Google_tests)
 
