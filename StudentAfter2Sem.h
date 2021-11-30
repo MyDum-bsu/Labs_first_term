@@ -7,7 +7,7 @@ class StudentAfter2Sem : public StudentAfter1Sem {
 private:
     int marks2[5];
 public:
-    StudentAfter2Sem(const int *marks2, char *name, int course, int group, int studentNum);
+    StudentAfter2Sem(const int *marks2, char *name, int course, int group,int studentNum);
 
     StudentAfter2Sem(StudentAfter2Sem *student);
 

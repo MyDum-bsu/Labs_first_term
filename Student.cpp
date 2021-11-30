@@ -1,5 +1,8 @@
 #include "Student.h"
 
+int Student::sID = 0;
+
+
 Student::Student(char *name, int course, int group, int studentNum) {
 
     this->group = group;
