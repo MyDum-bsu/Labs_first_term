@@ -125,4 +125,8 @@ TEST (avg, groupAfter2Sem) {
 TEST (copy, Student) {
     Student Man("MikeHowe", 2, 2, 257);
     Student Woman(Man);
+    ASSERT_EQ(Man.getGroup(), Woman.getGroup());
+    ASSERT_EQ(Man.getName(), Woman.getName());
+    ASSERT_EQ(Man.getCourse(), Woman.getCourse());
+    ASSERT_EQ(Man.getStudentNum(), Woman.getStudentNum());
 }
