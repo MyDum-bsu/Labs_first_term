@@ -17,7 +17,8 @@ public:
     Student(char *name, int course, int group, int studentNum);
 
     Student(Student *student);
-    char* getName();
+
+    char *getName();
 
     int getCourse();
 
@@ -32,11 +33,10 @@ public:
     void setGroup(int group);
 
 
-    friend std::ostream &operator<<(std::ostream &out,const Student &student);
+    friend std::ostream &operator<<(std::ostream &out, const Student &student);
 
     virtual double averageMark();
 };
-
 
 
 #endif //LABS_FIRST_TERM_STUDENT_H

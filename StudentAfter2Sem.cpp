@@ -1,7 +1,3 @@
-//
-// Created by mydum on 22.11.21.
-//
-
 #include "StudentAfter2Sem.h"
 
 double StudentAfter2Sem::averageMark() {

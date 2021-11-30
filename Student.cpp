@@ -1,6 +1,7 @@
 #include "Student.h"
 
 Student::Student(char *name, int course, int group, int studentNum) {
+
     this->group = group;
     this->course = course;
     this->name = name;
@@ -42,7 +43,3 @@ std::ostream &operator<<(std::ostream &out,const Student &student) {
 double Student::averageMark() {
     return 0;
 }
-
-
-
-
