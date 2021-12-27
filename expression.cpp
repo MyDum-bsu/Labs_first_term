@@ -1,5 +1,7 @@
 #include "expression.h"
 
+#include <utility>
+
 Expression::Expression(std::string s) : value_(std::move(s)) {
     if (value_.length() == 1) {
         if (value_ == "+")
@@ -23,9 +25,9 @@ Expression::Expression(std::string s) : value_(std::move(s)) {
     } else {
         type_ = kNumber;
         for (auto i: value_) {
-            if (i != '.' && (i < '0' || i > '9'))
-                if (i != value_[0] && i == '-')
-                    type_ = kNULL;
+            if (i != '.' && (i < '0' || i > '9')) {
+                type_ = kNULL;
+            }
         }
     }
 }
@@ -61,7 +63,7 @@ bool Expression::IsNull() const {
 }
 
 void Expression::Set(std::string s) {
-    value_ = s;
+    value_ = std::move(s);
     if (value_.length() == 1) {
         if (value_ == "+")
             type_ = kPlus;
@@ -84,9 +86,9 @@ void Expression::Set(std::string s) {
     } else {
         type_ = kNumber;
         for (auto i: value_) {
-            if (i != '.' && (i < '0' || i > '9'))
-                if (i != value_[0] && i == '-')
-                    type_ = kNULL;
+            if (i != '.' && (i < '0' || i > '9')) {
+                type_ = kNULL;
+            }
         }
     }
 }
@@ -114,7 +116,7 @@ double Expression::Calculate(const Expression &left, const Expression &right, co
             return left_val / right_val;
         }
         case kPower : {
-            if (left_val == 0 && right_val) {
+            if (left_val == 0 && right_val == 0) {
                 throw std::logic_error("Wrong expression 0^0");
             }
             return pow(left_val, right_val);

@@ -1,61 +1,13 @@
 #include "Calculator.h"
 
-/*int Calculator::getPriority(const std::string &operation) {
-//    if (operation == "+" || operation == "-") {
-//        return 1;
-//    }
-//    if (operation == "(" || operation == "(") {
-//        return 3;
-//    }
-//    return 2;
-//}
-//
-//double calculate(double a, double b, const std::string &operation) {
-//    if (operation == "+") {
-//        return a + b;
-//    }
-//    if (operation == "-") {
-//        return a - b;
-//    }
-//    if (operation == "*") {
-//        return a * b;
-//    }
-//    if (operation == "/") {
-//        if (b == 0) {
-//            std::cout << "You can't divide by zero\n";
-//        } else {
-//            return a / b;
-//        }
-//    }
-//    return -1;
-//}
-//
-//void Calculator::makeOperation() {
-//    double a = *numbers_.head();
-//    numbers_.pop();
-//    double b = *numbers_.head();
-//    numbers_.pop();
-//    std::string operation = operation_.head();
-//    operation_.pop();
-//    numbers_.push(calculate(a, b, operation));
-//}
-//
-//void Calculator::RPN() {
-//    if (string_.empty()) {
-//        return 0;
-//    }
-//
-//}
-*/
-
 bool IsPartOfNumber(char c) {
     return (c >= '0' && c <= '9') || c == '.';
 }
 
-void Calculator::Calculate() {
+double Calculator::Calculate() {
     if (!isProper_) {
         std::cout << "Wrong expression!" << std::endl;
-        return;
+        return 0;
     }
     RPN();
     stack_on_array<Expression> numbers;
@@ -70,6 +22,7 @@ void Calculator::Calculate() {
         }
     }
     result = std::stod(numbers.pop().GetValue());
+    return result;
 }
 
 void Calculator::RPN() {
@@ -136,20 +89,22 @@ std::string Calculator::ProcessExpression(std::string expression) {
             expression.insert(i + 1, "0");
 
         }
+
+        size_t pos = expression.find("+-");
+        if (pos != std::string::npos)
+            expression.replace(pos, 2, "+0-");
+        pos = expression.find("-+");
+        if (pos != std::string::npos)
+            expression.replace(pos, 2, "-");
+        pos = expression.find("--");
+        if (pos != std::string::npos)
+            expression.replace(pos, 2, "+");
+        pos = expression.find("++");
+        if (pos != std::string::npos)
+            expression.replace(pos, 2, "+");
     }
-    size_t pos = expression.find("+-");
-    if (pos != std::string::npos)
-        expression.replace(pos, 2, "+0-");
-    pos = expression.find("-+");
-    if (pos != std::string::npos)
-        expression.replace(pos, 2, "-");
-    pos = expression.find("--");
-    if (pos != std::string::npos)
-        expression.replace(pos, 2, "+");
-    pos = expression.find("++");
-    if (pos != std::string::npos)
-        expression.replace(pos, 2, "+");
     return expression;
+
 
 }
 
@@ -177,13 +132,13 @@ bool Calculator::CheckExpression(const std::string &expression) {
     int numbers = 0;
     int operations = 0;
     bool numberIsActive = false;
-    for (int i = 0; i < expression.length(); i++) {
-        if (IsNumber(expression[i]) && !numberIsActive) {
+    for (char i: expression) {
+        if (IsNumber(i) && !numberIsActive) {
             ++numbers;
             numberIsActive = true;
-        } else if (!IsNumber(expression[i])) {
+        } else if (!IsNumber(i)) {
             numberIsActive = false;
-            if (expression[i] == '(' || expression[i] == ')')
+            if (i == '(' || i == ')')
                 continue;
             ++operations;
         }
@@ -196,15 +151,26 @@ Calculator::Calculator(const std::string &string) {
     isProper_ = CheckExpression(expression_);
 }
 
-void Calculator::Print() const {
-    std::cout << ">>> " << result << std::endl;
-}
-
-int main() {
-    std::string s;
-    std::cin >> s;
-    Calculator a(s);
-    a.Calculate();
-    a.Print();
-    return 0;
-}
+//void Calculator::Print() const {
+//    std::cout << result << std::endl;
+//}
+//
+//int main() {
+//    std::string s;
+//    // std::string genius = "0";
+////    genius += "+10^0";
+//    //for (int i = 0; i < 1e4; ++i) {
+//    //  genius += "+10^(-6)";
+//    //}
+//
+//    //Calculator b(genius);
+//    //b.Calculate();
+//    //b.Print();
+//    //return 0;
+////    a:
+//    std::cin >> s;
+//    Calculator a(s);
+//    std::cout << a.Calculate();
+////    goto a;
+//    return 0;
+//}
